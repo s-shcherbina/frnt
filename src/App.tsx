@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import NoteList from './components/note-list';
+import { Box } from '@mui/material';
+import SummaryBar from './components/summary-bar';
+import SummaryList from './components/summary-list';
+import NotesBar from './components/notes-bar';
 
-function App() {
+const App: FC = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ px: { xs: 0.1, lg: 5 } }}>
+      <NotesBar />
+      <NoteList />
+      <SummaryBar />
+      <SummaryList />
+    </Box>
   );
-}
+};
 
 export default App;
