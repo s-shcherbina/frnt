@@ -28,7 +28,13 @@ const NotesBar: FC<{ archived: boolean }> = ({ archived }) => {
         data={notesBar}
         gridData={1.9}
       />
-      <Grid item xs={1.3} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+
+      <Grid
+        item
+        xs={12}
+        md={1.3}
+        sx={{ display: 'flex', justifyContent: { xs: 'start', md: 'end' } }}
+      >
         <IconButton
           sx={{ color: 'white', mr: -2 }}
           onClick={() => dispatch(toggleArchivedAll(archived))}

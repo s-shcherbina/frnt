@@ -29,7 +29,12 @@ const NoteItem: FC<INote> = (note): JSX.Element => {
         data={[...Object.values(note).slice(1, -1)]}
         gridData={1.9}
       />
-      <Grid item xs={1.3} sx={{ display: 'flex', justifyContent: 'end' }}>
+      <Grid
+        item
+        xs={6}
+        md={1.3}
+        sx={{ display: 'flex', justifyContent: { xs: 'start', md: 'end' } }}
+      >
         <FormPopover note={note} />
         <IconButton
           sx={{ mr: -2 }}

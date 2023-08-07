@@ -17,7 +17,12 @@ const TableComponent: FC<{
 }> = ({ category, gridName, data, gridData }): JSX.Element => {
   return (
     <>
-      <Grid item xs={0.9} sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Grid
+        item
+        xs={12}
+        md={0.9}
+        sx={{ display: 'flex', justifyContent: { xs: 'start', md: 'center' } }}
+      >
         {category && (
           <Avatar sx={{ bgcolor: grey[700], p: 1 }}>
             {category === 'Task' ? (
@@ -32,7 +37,7 @@ const TableComponent: FC<{
           </Avatar>
         )}
       </Grid>
-      <Grid item xs={gridName}>
+      <Grid item xs={12} md={gridName}>
         <Typography
           variant='h5'
           noWrap
@@ -42,7 +47,7 @@ const TableComponent: FC<{
         </Typography>
       </Grid>
       {data.slice(1).map((item) => (
-        <Grid key={uuid()} item xs={gridData}>
+        <Grid key={uuid()} item xs={12} md={gridData}>
           <Typography
             variant='h5'
             noWrap
