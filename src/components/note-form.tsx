@@ -43,6 +43,7 @@ const NoteForm: FC<{
           <Select
             required
             label='Category'
+            value={category}
             sx={{ fontSize: 24 }}
             onChange={(e: SelectChangeEvent) => setCategory(e.target.value)}
           >
