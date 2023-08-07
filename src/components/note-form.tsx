@@ -41,7 +41,7 @@ const NoteForm: FC<{
         <FormControl variant='standard'>
           <InputLabel>Category</InputLabel>
           <Select
-            value={category}
+            required
             label='Category'
             sx={{ fontSize: 24 }}
             onChange={(e: SelectChangeEvent) => setCategory(e.target.value)}
@@ -57,7 +57,7 @@ const NoteForm: FC<{
           variant='standard'
           label='Name'
           value={name}
-          inputProps={{ style: { fontSize: 24 } }}
+          inputProps={{ style: { fontSize: 24 }, required: true }}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           }
@@ -66,7 +66,7 @@ const NoteForm: FC<{
           variant='standard'
           label='Content'
           value={content}
-          inputProps={{ style: { fontSize: 24 } }}
+          inputProps={{ style: { fontSize: 24 }, required: true }}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setContent(e.target.value)
           }
