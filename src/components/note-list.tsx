@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import uuid from 'react-uuid';
 import { Stack } from '@mui/material';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../utils/hooks';
 import NoteItem from './note-item';
 import NotesBar from './notes-bar';
 

@@ -1,11 +1,10 @@
 import { FC, useState } from 'react';
 import NoteList from './components/note-list';
 import { Button, Stack, Typography } from '@mui/material';
-import SummaryBar from './components/summary-bar';
 import SummaryList from './components/summary-list';
-import FormPopover from './helpers/form-popover';
+import FormPopover from './components/form-popover';
 import { grey } from '@mui/material/colors';
-import { useExistArchived } from './hooks';
+import { useExistArchived, useExistNotes } from './utils/hooks';
 
 const App: FC = (): JSX.Element => {
   const [showArchive, setShowArchive] = useState(false);
@@ -13,14 +12,9 @@ const App: FC = (): JSX.Element => {
   return (
     <Stack sx={{ px: { xs: 0.2, lg: 5 } }}>
       <NoteList archived={false} />
-      <FormPopover
-        title={'Create Note'}
-        editCategory=''
-        editName=''
-        editContent=''
-      />
-      <SummaryBar />
-      <SummaryList />
+      <FormPopover note={null} />
+
+      {useExistNotes() && <SummaryList />}
       {useExistArchived() && (
         <Button
           variant='outlined'

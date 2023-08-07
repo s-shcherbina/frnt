@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import uuid from 'react-uuid';
-import { months, noteList } from '../../moks';
+import { months, noteList } from '../../common/moks';
 
 export interface ICreateNote {
   name: string;

@@ -64,25 +64,9 @@ export const noteList = [
   },
 ];
 
-// export const createdAt = new Date();
+export const notesBar = ['Name', 'Created', 'Category', 'Content', 'Dates'];
 
-export const summary = [
-  { category: 'Task', active: 17, archived: 5 },
-  { category: 'Random Thought', active: 3, archived: 1 },
-  { category: 'Idea', active: 3, archived: 1 },
-  { category: 'Quote', active: 2, archived: 11 },
-];
-
-// export const summary = [
-//   { category: 'Task', icon: 'shopping_cart' },
-//   { category: 'Random Thought', icon: 'psychology' },
-//   { category: 'Idea', icon: 'lightbulb_outline' },
-//   { category: 'Quote', icon: 'format_quote' },
-// ];
-
-export const notesBar = ['Created', 'Category', 'Content', 'Dates'];
-
-export const summaryBar = ['Active', 'Archived'];
+export const summaryBar = ['Note Category', 'Active', 'Archived'];
 
 export const categories = ['Task', 'Random Thought', 'Idea', 'Quote'];
 

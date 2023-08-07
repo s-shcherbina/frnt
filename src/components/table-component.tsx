@@ -11,11 +11,10 @@ import uuid from 'react-uuid';
 
 const TableComponent: FC<{
   category: string;
-  name: string;
   gridName: number;
   data: string[];
   gridData: number;
-}> = ({ category, name, gridName, data, gridData }): JSX.Element => {
+}> = ({ category, gridName, data, gridData }): JSX.Element => {
   return (
     <>
       <Grid item xs={0.9} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -39,10 +38,10 @@ const TableComponent: FC<{
           noWrap
           sx={{ fontWeight: category ? 'normal' : 'bold' }}
         >
-          {name}
+          {data[0]}
         </Typography>
       </Grid>
-      {data.map((item) => (
+      {data.slice(1).map((item) => (
         <Grid key={uuid()} item xs={gridData}>
           <Typography
             variant='h5'
