@@ -1,25 +1,24 @@
 import { FC } from 'react';
 import uuid from 'react-uuid';
 import { Stack } from '@mui/material';
-import TableComponent from './table-component';
-import CreatePopover from '../helpers/create-popover';
 import { useAppSelector } from '../hooks';
 import NoteItem from './note-item';
+import NotesBar from './notes-bar';
 
-const NoteList: FC = (): JSX.Element => {
-  const notes = useAppSelector((state) => state.notes.list);
+const NoteList: FC<{ archived: boolean }> = ({ archived }): JSX.Element => {
+  const notes = useAppSelector((state) => state.notes.list).filter(
+    (note) => note.archived === archived
+  );
+
   return (
-    <Stack>
-      {notes.map((note) => (
-        <NoteItem key={uuid()} {...note} />
-      ))}
-      <CreatePopover
-        title={'Create Note'}
-        editCategory=''
-        editName=''
-        editContent=''
-      />
-    </Stack>
+    <>
+      {notes.length ? <NotesBar archived={archived} /> : null}
+      <Stack>
+        {notes.map((note) => (
+          <NoteItem key={uuid()} {...note} />
+        ))}
+      </Stack>
+    </>
   );
 };
 

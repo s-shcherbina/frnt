@@ -2,29 +2,21 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import uuid from 'react-uuid';
 import { months, noteList } from '../../moks';
 
-interface IEditNote {
-  id: string;
+export interface ICreateNote {
   name: string;
   category: string;
   content: string;
 }
 
-export interface INote {
+export interface IEditNote extends ICreateNote {
   id: string;
-  name: string;
   date: string;
-  category: string;
-  content: string;
-  dates: { prev: string; next: string };
+}
+
+export interface INote extends IEditNote {
+  dates: string;
   archived: boolean;
 }
-
-// export interface INote extends IEditNote {
-//   // id: string;
-//   date: string;
-//   dates: { prev: string; next: string };
-//   archived: boolean;
-// }
 
 interface INotesState {
   list: INote[];
@@ -38,17 +30,16 @@ const noteSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    // addNote(state, action: PayloadAction<Omit<IEditNote, 'id'>>) {
-    addNote(state, action: PayloadAction<IEditNote>) {
+    addNote(state, action: PayloadAction<ICreateNote>) {
       state.list.push({
-        id: uuid() || action.payload.id,
+        id: uuid(),
         name: action.payload.name,
         date: `${
           months[new Date().getMonth()]
         } ${new Date().getDate()}, ${new Date().getFullYear()}`,
         category: action.payload.category,
         content: action.payload.content,
-        dates: { prev: 'hjj', next: 'yuyuy' },
+        dates: '',
         archived: false,
       });
     },
@@ -60,8 +51,20 @@ const noteSlice = createSlice({
       }
     },
 
+    toggleArchivedAll(state, action: PayloadAction<boolean>) {
+      state.list
+        .filter((note) => note.archived === action.payload)
+        .map((note) => (note.archived = !action.payload));
+    },
+
     removeNote(state, action: PayloadAction<string>) {
       state.list = state.list.filter((note) => note.id !== action.payload);
+    },
+
+    removeNotes(state, action: PayloadAction<boolean>) {
+      state.list = state.list.filter(
+        (note) => note.archived !== action.payload
+      );
     },
 
     editNote(state, action: PayloadAction<IEditNote>) {
@@ -70,12 +73,35 @@ const noteSlice = createSlice({
         editNote.category = action.payload.category;
         editNote.name = action.payload.name;
         editNote.content = action.payload.content;
+
+        editNote.date = `${
+          months[new Date().getMonth()]
+        } ${new Date().getDate()}, ${new Date().getFullYear()}`;
+
+        editNote.dates = `${action.payload.date.slice(
+          action.payload.date.indexOf(' '),
+          action.payload.date.indexOf(',')
+        )}/${
+          months.indexOf(
+            action.payload.date.slice(0, action.payload.date.indexOf(' '))
+          ) + 1
+        }/${action.payload.date.slice(
+          action.payload.date.indexOf(',') + 2
+        )}, ${new Date().getDate()}/${
+          new Date().getMonth() + 1
+        }/${new Date().getFullYear()}`;
       }
     },
   },
 });
 
-export const { addNote, toggleArchived, removeNote, editNote } =
-  noteSlice.actions;
+export const {
+  addNote,
+  toggleArchived,
+  toggleArchivedAll,
+  removeNote,
+  removeNotes,
+  editNote,
+} = noteSlice.actions;
 
 export default noteSlice.reducer;

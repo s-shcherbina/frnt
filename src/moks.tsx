@@ -2,67 +2,69 @@ export const noteList = [
   {
     id: '1',
     name: 'Shopping List',
-    date: 'Sep 20, 2022',
+    date: 'Aug 2, 2023',
     category: 'Task',
     content: 'Tomatoes, bread',
-    dates: { prev: 'Sep 20, 2022', next: 'Sep 20, 2022' },
+    dates: '',
     archived: false,
   },
   {
     id: '2',
     name: 'The theory of evolution',
-    date: 'Sep 21, 2022',
+    date: 'Aug 3, 2023',
     category: 'Random Thought',
     content: 'The evoluton has a lot of theories',
-    dates: { prev: 'Sep 20, 2022', next: 'April 20, 2021' },
+    dates: '1/8/2023, 5/8/2023',
     archived: false,
   },
   {
     id: '3',
     name: 'New Feature',
-    date: 'Sep 22, 2022',
+    date: 'Aug 4, 2023',
     category: 'Idea',
     content: 'Implement new feature',
-    dates: { prev: 'April 20, 2021', next: 'Sep 22, 2022' },
+    dates: '',
     archived: false,
   },
   {
     id: '4',
     name: 'William Gaddis',
-    date: 'Sep 23, 2022',
+    date: 'Aug 5, 2023',
     category: 'Quote',
-    content: `Power doesn't corrupt people; people corrupt power`,
-    dates: { prev: 'April 20, 2021', next: 'April 20, 2021' },
+    content: `Power doesn't connection to..`,
+    dates: '',
     archived: false,
   },
   {
     id: '5',
     name: 'Books',
-    date: 'Sep 23, 2022',
+    date: 'Aug 5, 2023',
     category: 'Task',
     content: 'The Lean Startup',
-    dates: { prev: 'April 20, 2021', next: 'Sep 20, 2022' },
+    dates: '',
     archived: false,
   },
   {
     id: '6',
     name: 'William ',
-    date: 'Sep 18, 2022',
+    date: 'Aug 2, 2023',
     category: 'Quote',
     content: 'Bread, milk',
-    dates: { prev: 'April 20, 2021', next: 'Sep 20, 2022' },
+    dates: '',
     archived: true,
   },
   {
     id: '7',
     name: 'Old Shopping List',
-    date: 'Sep 19, 2022',
+    date: 'Aug 3, 2023',
     category: 'Task',
     content: 'Bread, milk, meat',
-    dates: { prev: 'April 20, 2021', next: 'April 20, 2021' },
+    dates: '',
     archived: true,
   },
 ];
+
+// export const createdAt = new Date();
 
 export const summary = [
   { category: 'Task', active: 17, archived: 5 },
@@ -71,22 +73,20 @@ export const summary = [
   { category: 'Quote', active: 2, archived: 11 },
 ];
 
+// export const summary = [
+//   { category: 'Task', icon: 'shopping_cart' },
+//   { category: 'Random Thought', icon: 'psychology' },
+//   { category: 'Idea', icon: 'lightbulb_outline' },
+//   { category: 'Quote', icon: 'format_quote' },
+// ];
+
 export const notesBar = ['Created', 'Category', 'Content', 'Dates'];
+
+export const summaryBar = ['Active', 'Archived'];
 
 export const categories = ['Task', 'Random Thought', 'Idea', 'Quote'];
 
 export const months = [
-  // 'January',
-  // 'February',
-  // 'March',
-  // 'April',
-  // 'May',
-  // 'June',
-  // 'July',
-  // 'August',
-  // 'September',
-  // 'November',
-  // 'December',
   'Jan',
   'Feb',
   'March',

@@ -1,18 +1,47 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import NoteList from './components/note-list';
-import { Box } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import SummaryBar from './components/summary-bar';
 import SummaryList from './components/summary-list';
-import NotesBar from './components/notes-bar';
+import FormPopover from './helpers/form-popover';
+import { grey } from '@mui/material/colors';
+import { useExistArchived } from './hooks';
 
 const App: FC = (): JSX.Element => {
+  const [showArchive, setShowArchive] = useState(false);
+
   return (
-    <Box sx={{ px: { xs: 0.1, lg: 5 } }}>
-      <NotesBar />
-      <NoteList />
+    <Stack sx={{ px: { xs: 0.2, lg: 5 } }}>
+      <NoteList archived={false} />
+      <FormPopover
+        title={'Create Note'}
+        editCategory=''
+        editName=''
+        editContent=''
+      />
       <SummaryBar />
       <SummaryList />
-    </Box>
+      {useExistArchived() && (
+        <Button
+          variant='outlined'
+          color='inherit'
+          sx={{
+            textTransform: 'none',
+            alignSelf: 'end',
+            mt: 2,
+            bgcolor: grey[200],
+            width: 200,
+            mb: 6,
+          }}
+          onClick={() => setShowArchive(!showArchive)}
+        >
+          <Typography variant='h5'>
+            {showArchive ? 'Hide Archived' : 'Show Archive '}
+          </Typography>
+        </Button>
+      )}
+      {showArchive && <NoteList archived={true} />}
+    </Stack>
   );
 };
 

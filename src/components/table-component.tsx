@@ -19,26 +19,39 @@ const TableComponent: FC<{
   return (
     <>
       <Grid item xs={0.9} sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Avatar sx={{ bgcolor: grey[700], p: 1 }}>
-          {category === 'Task' ? (
-            <ShoppingCart fontSize='large' />
-          ) : category === 'Random Thought' ? (
-            <Psychology fontSize='large' />
-          ) : category === 'Idea' ? (
-            <LightbulbOutlined fontSize='large' />
-          ) : (
-            category === 'Quote' && <FormatQuote fontSize='large' />
-          )}
-        </Avatar>
+        {category && (
+          <Avatar sx={{ bgcolor: grey[700], p: 1 }}>
+            {category === 'Task' ? (
+              <ShoppingCart fontSize='large' />
+            ) : category === 'Random Thought' ? (
+              <Psychology fontSize='large' />
+            ) : category === 'Idea' ? (
+              <LightbulbOutlined fontSize='large' />
+            ) : (
+              category === 'Quote' && <FormatQuote fontSize='large' />
+            )}
+          </Avatar>
+        )}
       </Grid>
       <Grid item xs={gridName}>
-        <Typography variant='h5' noWrap>
+        <Typography
+          variant='h5'
+          noWrap
+          sx={{ fontWeight: category ? 'normal' : 'bold' }}
+        >
           {name}
         </Typography>
       </Grid>
       {data.map((item) => (
         <Grid key={uuid()} item xs={gridData}>
-          <Typography variant='h5' noWrap sx={{ opacity: 0.6 }}>
+          <Typography
+            variant='h5'
+            noWrap
+            sx={{
+              opacity: category ? 0.6 : 1,
+              fontWeight: category ? 'normal' : 'bold',
+            }}
+          >
             {item}
           </Typography>
         </Grid>

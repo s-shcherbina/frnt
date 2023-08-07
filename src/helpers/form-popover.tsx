@@ -1,25 +1,12 @@
 import { Close, Edit } from '@mui/icons-material';
-import {
-  Button,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Popover,
-  Select,
-  SelectChangeEvent,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, IconButton, Popover, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { ChangeEvent, FC, FormEvent, MouseEvent, useState } from 'react';
-import { categories } from '../moks';
-import uuid from 'react-uuid';
+import { FC, MouseEvent, useState, FormEvent } from 'react';
 import { useAppDispatch } from '../hooks';
 import { addNote, editNote } from '../store/slice/notes';
+import NoteForm from './note-form';
 
-const CreatePopover: FC<{
+const FormPopover: FC<{
   title: string;
   editCategory: string;
   editName: string;
@@ -27,6 +14,10 @@ const CreatePopover: FC<{
   // id: string;
 }> = ({ title, editCategory, editName, editContent }): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const [category, setCategory] = useState(editCategory);
+  const [name, setName] = useState(editName);
+  const [content, setContent] = useState(editContent);
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
@@ -37,12 +28,6 @@ const CreatePopover: FC<{
   };
 
   const open = Boolean(anchorEl);
-
-  const dispatch = useAppDispatch();
-
-  const [category, setCategory] = useState(editCategory);
-  const [name, setName] = useState(editName);
-  const [content, setContent] = useState(editContent);
   // const [create, setCreate] = useState(true);
 
   // console.log(category, name, content);
@@ -58,7 +43,7 @@ const CreatePopover: FC<{
             alignSelf: 'end',
             mt: 2,
             bgcolor: grey[200],
-            px: 4,
+            width: 200,
           }}
           onClick={(e) => {
             handleClick(e);
@@ -105,50 +90,13 @@ const CreatePopover: FC<{
           <Typography variant='h4' sx={{ alignSelf: 'center' }}>
             {title}
           </Typography>
-          <FormControl variant='standard'>
-            <InputLabel>Category</InputLabel>
-            <Select
-              value={category}
-              label='Category'
-              onChange={(e: SelectChangeEvent) => setCategory(e.target.value)}
-            >
-              {categories.map((category) => (
-                <MenuItem key={uuid()} value={category}>
-                  {category}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <TextField
-            variant='standard'
-            label='Name'
-            value={name}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setName(e.target.value)
-            }
+          <NoteForm
+            title={title}
+            category={category}
+            name={name}
+            content={content}
+            handleClose={handleClose}
           />
-          <TextField
-            variant='standard'
-            label='Content'
-            value={content}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setContent(e.target.value)
-            }
-          />
-          <Button
-            type='submit'
-            variant='outlined'
-            color='inherit'
-            sx={{
-              textTransform: 'none',
-              alignSelf: 'end',
-              bgcolor: grey[200],
-              px: 4,
-            }}
-            onClick={handleClose}
-          >
-            <Typography variant='h5'>{title}</Typography>
-          </Button>
         </Stack>
         {/* </form> */}
       </Popover>
@@ -156,4 +104,4 @@ const CreatePopover: FC<{
   );
 };
 
-export default CreatePopover;
+export default FormPopover;

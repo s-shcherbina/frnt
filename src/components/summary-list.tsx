@@ -1,9 +1,9 @@
-import { Button, Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import { FC } from 'react';
 import { summary } from '../moks';
 import uuid from 'react-uuid';
 import TableComponent from './table-component';
-import { grey, indigo } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 
 const SummaryList: FC = (): JSX.Element => {
   return (
@@ -31,21 +31,6 @@ const SummaryList: FC = (): JSX.Element => {
           )}
         </Grid>
       ))}
-      <Button
-        variant='outlined'
-        color='inherit'
-        sx={{
-          textTransform: 'none',
-          alignSelf: 'end',
-          mt: 2,
-          bgcolor: grey[200],
-          mb: 4,
-        }}
-      >
-        <Typography variant='h5'>
-          {true ? 'Show Archived ' : 'Hide Archived '}
-        </Typography>
-      </Button>
     </Stack>
   );
 };
