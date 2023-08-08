@@ -13,7 +13,7 @@ const NotesBar: FC<{ archived: boolean }> = ({ archived }) => {
     <Grid
       container
       sx={{
-        display: 'flex',
+        display: { xs: 'none', md: 'flex' },
         alignItems: 'center',
         bgcolor: grey[500],
         color: '#fff',
