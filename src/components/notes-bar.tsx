@@ -6,8 +6,9 @@ import { notesBar } from '../common/moks';
 import { removeNotes, toggleArchivedAll } from '../store/slice/notes';
 import { useDispatch } from 'react-redux';
 import TableComponent from './table-component';
+import { INotesListProps } from '../types';
 
-const NotesBar: FC<{ archived: boolean }> = ({ archived }) => {
+const NotesBar: FC<INotesListProps> = ({ archived }) => {
   const dispatch = useDispatch();
   return (
     <Grid

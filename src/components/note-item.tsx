@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { INote, removeNote, toggleArchived } from '../store/slice/notes';
+import { removeNote, toggleArchived } from '../store/slice/notes';
 import TableComponent from './table-component';
 import { Grid, IconButton } from '@mui/material';
 import { Archive, Delete, Unarchive } from '@mui/icons-material';
@@ -7,6 +7,7 @@ import { indigo } from '@mui/material/colors';
 import uuid from 'react-uuid';
 import FormPopover from './form-popover';
 import { useAppDispatch } from '../utils/hooks';
+import { INote } from '../types';
 
 const NoteItem: FC<INote> = (note): JSX.Element => {
   const dispatch = useAppDispatch();

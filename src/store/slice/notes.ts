@@ -1,26 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import uuid from 'react-uuid';
 import { months, noteList } from '../../common/moks';
-
-export interface ICreateNote {
-  name: string;
-  category: string;
-  content: string;
-}
-
-export interface IEditNote extends ICreateNote {
-  id: string;
-  date: string;
-}
-
-export interface INote extends IEditNote {
-  dates: string;
-  archived: boolean;
-}
-
-interface INotesState {
-  list: INote[];
-}
+import { ICreateNote, IEditNote, INotesState } from '../../types';
 
 const initialState: INotesState = {
   list: noteList,

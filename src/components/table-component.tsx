@@ -8,13 +8,14 @@ import { Avatar, Grid, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { FC } from 'react';
 import uuid from 'react-uuid';
+import { ITableComponentProps } from '../types';
 
-const TableComponent: FC<{
-  category: string;
-  gridName: number;
-  data: string[];
-  gridData: number;
-}> = ({ category, gridName, data, gridData }): JSX.Element => {
+const TableComponent: FC<ITableComponentProps> = ({
+  category,
+  gridName,
+  data,
+  gridData,
+}): JSX.Element => {
   return (
     <>
       <Grid

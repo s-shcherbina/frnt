@@ -14,12 +14,10 @@ import { categories } from '../common/moks';
 import { grey } from '@mui/material/colors';
 import uuid from 'react-uuid';
 import { useAppDispatch } from '../utils/hooks';
-import { INote, addNote, editNote } from '../store/slice/notes';
+import { addNote, editNote } from '../store/slice/notes';
+import { INoteFormProps } from '../types';
 
-const NoteForm: FC<{
-  note: INote | null;
-  handleClose: () => void;
-}> = ({ note, handleClose }): JSX.Element => {
+const NoteForm: FC<INoteFormProps> = ({ note, handleClose }): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [category, setCategory] = useState(note ? note.category : '');

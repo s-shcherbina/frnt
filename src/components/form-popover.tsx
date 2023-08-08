@@ -2,12 +2,10 @@ import { Close, Edit } from '@mui/icons-material';
 import { Button, IconButton, Popover, Stack, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { FC, MouseEvent, useState } from 'react';
-import { INote } from '../store/slice/notes';
 import NoteForm from './note-form';
+import { IFormPopoverProps } from '../types';
 
-const FormPopover: FC<{
-  note: INote | null;
-}> = ({ note }): JSX.Element => {
+const FormPopover: FC<IFormPopoverProps> = ({ note }): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
